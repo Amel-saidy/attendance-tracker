@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api',
 });
 
 // Add Authorization header for secured routes
@@ -14,15 +14,13 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-// Add response interceptor to handle errors
+// Add response interceptor to handle errors globally
 API.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      // Clear storage if unauthorized
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      // Force reload to trigger auth check in App.js
       if (window.location.pathname !== '/login') {
         window.location.href = '/login';
       }

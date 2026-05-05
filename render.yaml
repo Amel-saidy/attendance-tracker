@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: attendance-tracker-api
+    env: node
+    rootDir: attendance-tracker1
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: NODE_ENV
+        value: production

@@ -1,4 +1,3 @@
-//idex.js is the entry point of the application. It is responsible for creating the server, connecting to the database, and defining the routes.
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -9,25 +8,38 @@ const attendanceRoutes = require('./routes/attendanceRoutes');
 dotenv.config();
 const app = express();
 
-// Start the server
+// CORS - allow frontend URLs
+const allowedOrigins = [
+  'http://localhost:3000',
+  process.env.FRONTEND_URL, // Set this on Render dashboard
+].filter(Boolean);
+
 app.use(cors({
-  origin: ['http://localhost:3000', 
-    'http://192.168.56.1:3000'], // Replace with your frontend URL
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
 }));
+
 app.use(express.json());
 
-// Sync database with models
-sequelize.sync()
-  .then(() => console.log('Database synced successfully'))
-  .catch((error) => console.log('Database sync error:', error));
-
-
+// Health check route
+app.get('/', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Attendance Tracker API is running' });
+});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/attendance', attendanceRoutes);
 
-
+// Sync database
+sequelize.sync({ alter: true })
+  .then(() => console.log('Database synced successfully'))
+  .catch((error) => console.log('Database sync error:', error));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
