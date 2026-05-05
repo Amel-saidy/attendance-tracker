@@ -7,6 +7,7 @@ import {
   useMediaQuery, useTheme 
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
@@ -187,6 +188,7 @@ function App() {
           </Typography>
         </Box>
       </Router>
+      <SpeedInsights />
     </ThemeProvider>
   );
 }
