@@ -1,0 +1,16 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "attendance-tracker/build",
+  "framework": "create-react-app",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "functions": {
+    "attendance-tracker/src/**/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  }
+}
