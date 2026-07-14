@@ -90,13 +90,13 @@ function ForgotPassword() {
           <Box component="form" onSubmit={handleRequestCode}>
             <TextField
               margin="normal"
-              required
               fullWidth
               label="Email Address"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={loading}
+              inputProps={{ required: true }}
             />
             <Button
               type="submit"
@@ -113,33 +113,33 @@ function ForgotPassword() {
           <Box component="form" onSubmit={handleResetPassword}>
             <TextField
               margin="normal"
-              required
               fullWidth
               label="Verification Code (6 digits)"
               type="text"
               value={code}
               onChange={(e) => setCode(e.target.value)}
               disabled={loading}
+              inputProps={{ required: true }}
             />
             <TextField
               margin="normal"
-              required
               fullWidth
               label="New Password"
               type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               disabled={loading}
+              inputProps={{ required: true }}
             />
             <TextField
               margin="normal"
-              required
               fullWidth
               label="Confirm New Password"
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               disabled={loading}
+              inputProps={{ required: true }}
             />
             <Button
               type="submit"

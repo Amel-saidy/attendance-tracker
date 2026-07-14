@@ -44,23 +44,23 @@ function Login({ setUser }) {
         <Box component="form" onSubmit={handleSubmit}>
           <TextField
             margin="normal"
-            required
             fullWidth
             label="Email Address"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             disabled={loading}
+            inputProps={{ required: true }}
           />
           <TextField
             margin="normal"
-            required
             fullWidth
             label="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             disabled={loading}
+            inputProps={{ required: true }}
           />
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 0.5 }}>
             <Link to="/forgot-password" style={{ color: '#1a237e', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>

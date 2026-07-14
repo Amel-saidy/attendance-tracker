@@ -46,32 +46,32 @@ function Register({ setUser }) {
         <Box component="form" onSubmit={handleSubmit}>
           <TextField
             margin="normal"
-            required
             fullWidth
             label="Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             disabled={loading}
+            inputProps={{ required: true }}
           />
           <TextField
             margin="normal"
-            required
             fullWidth
             label="Email Address"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             disabled={loading}
+            inputProps={{ required: true }}
           />
           <TextField
             margin="normal"
-            required
             fullWidth
             label="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             disabled={loading}
+            inputProps={{ required: true }}
           />
           <TextField
             select
