@@ -62,6 +62,11 @@ function Login({ setUser }) {
             onChange={(e) => setPassword(e.target.value)}
             disabled={loading}
           />
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 0.5 }}>
+            <Link to="/forgot-password" style={{ color: '#1a237e', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+              Forgot Password?
+            </Link>
+          </Box>
           <Button
             type="submit"
             fullWidth

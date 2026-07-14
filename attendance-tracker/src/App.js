@@ -9,6 +9,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import Login from './components/Login';
 import Register from './components/Register';
+import ForgotPassword from './components/ForgotPassword';
 import Dashboard from './components/Dashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import Home from './pages/Home';
@@ -173,6 +174,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path="/login" element={!user ? <Login setUser={setUser} /> : <Navigate to="/dashboard" />} />
             <Route path="/register" element={!user ? <Register setUser={setUser} /> : <Navigate to="/dashboard" />} />
+            <Route path="/forgot-password" element={!user ? <ForgotPassword /> : <Navigate to="/dashboard" />} />
             <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
             <Route path="/admin" element={user?.role === 'admin' ? <AdminDashboard /> : <Navigate to="/login" />} />
             <Route path="/attendance" element={user ? <Attendance /> : <Navigate to="/login" />} />
