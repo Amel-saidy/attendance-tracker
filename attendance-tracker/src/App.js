@@ -7,6 +7,7 @@ import {
   useMediaQuery, useTheme 
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Analytics } from '@vercel/analytics/react';
 import Login from './components/Login';
 import Register from './components/Register';
 import ForgotPassword from './components/ForgotPassword';
@@ -116,6 +117,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Analytics />
       <Router>
         <AppBar position="sticky" elevation={0} sx={{ borderBottom: '1px solid rgba(0,0,0,0.1)', bgcolor: 'white', color: 'text.primary' }}>
           <Toolbar>
